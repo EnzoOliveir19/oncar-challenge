@@ -13,11 +13,17 @@ function App() {
   }
 
   return (
-    <div>
-      <h1>ONCar - Gestão de Veículos</h1>
-      <VehicleForm onVehicleCreated={handleVehicleCreated} />
-      <VehicleList key={refresh} onVehiclesLoaded={setVehicles} />
-      <SimulationForm vehicles={vehicles} />
+    <div className="min-h-screen bg-gray-950 text-white">
+      <header className="bg-gray-900 border-b border-gray-800 px-8 py-4">
+        <h1 className="text-2xl font-bold text-orange-500">ONCar</h1>
+        <p className="text-gray-400 text-sm">Gestão de Veículos</p>
+      </header>
+
+      <main className="max-w-5xl mx-auto px-8 py-10 grid grid-cols-1 gap-10">
+        <VehicleForm onVehicleCreated={handleVehicleCreated} />
+        <VehicleList key={refresh} onVehiclesLoaded={setVehicles} />
+        <SimulationForm vehicles={vehicles} />
+      </main>
     </div>
   );
 }

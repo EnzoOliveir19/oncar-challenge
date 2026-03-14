@@ -2,10 +2,7 @@ import { useState } from 'react';
 
 function VehicleForm({ onVehicleCreated }) {
   const [form, setForm] = useState({
-    modelo: '',
-    marca: '',
-    cor: '',
-    valor: ''
+    modelo: '', marca: '', cor: '', valor: ''
   });
 
   function handleChange(e) {
@@ -27,14 +24,23 @@ function VehicleForm({ onVehicleCreated }) {
   }
 
   return (
-    <div>
-      <h2>Cadastrar Veículo</h2>
-      <form onSubmit={handleSubmit}>
-        <input name="modelo" placeholder="Modelo" value={form.modelo} onChange={handleChange} /><br />
-        <input name="marca" placeholder="Marca" value={form.marca} onChange={handleChange} /><br />
-        <input name="cor" placeholder="Cor" value={form.cor} onChange={handleChange} /><br />
-        <input name="valor" placeholder="Valor" value={form.valor} onChange={handleChange} /><br />
-        <button type="submit">Cadastrar</button>
+    <div className="bg-gray-900 border border-gray-800 rounded-xl p-6">
+      <h2 className="text-lg font-bold text-orange-500 uppercase tracking-widest mb-6">
+        Cadastrar Veículo
+      </h2>
+      <form onSubmit={handleSubmit} className="grid grid-cols-2 gap-4">
+        <input name="modelo" placeholder="Modelo" value={form.modelo} onChange={handleChange}
+          className="bg-gray-800 border border-gray-700 text-white placeholder-gray-500 rounded-lg px-4 py-2 focus:outline-none focus:border-orange-500" />
+        <input name="marca" placeholder="Marca" value={form.marca} onChange={handleChange}
+          className="bg-gray-800 border border-gray-700 text-white placeholder-gray-500 rounded-lg px-4 py-2 focus:outline-none focus:border-orange-500" />
+        <input name="cor" placeholder="Cor" value={form.cor} onChange={handleChange}
+          className="bg-gray-800 border border-gray-700 text-white placeholder-gray-500 rounded-lg px-4 py-2 focus:outline-none focus:border-orange-500" />
+        <input name="valor" placeholder="Valor (R$)" value={form.valor} onChange={handleChange}
+          className="bg-gray-800 border border-gray-700 text-white placeholder-gray-500 rounded-lg px-4 py-2 focus:outline-none focus:border-orange-500" />
+        <button type="submit"
+          className="col-span-2 bg-orange-500 hover:bg-orange-400 text-white font-bold py-2 rounded-lg uppercase tracking-widest transition">
+          Cadastrar
+        </button>
       </form>
     </div>
   );
