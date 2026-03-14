@@ -12,6 +12,7 @@ type Vehicle struct {
 	Marca  string  `json:"marca"`
 	Cor    string  `json:"cor"`
 	Valor  float64 `json:"valor"`
+	Imagem string  `json:"imagem"`
 }
 
 var Vehicles = []Vehicle{}

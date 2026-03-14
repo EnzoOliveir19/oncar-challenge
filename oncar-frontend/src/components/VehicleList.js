@@ -23,16 +23,22 @@ function VehicleList({ onVehiclesLoaded }) {
         <div className="grid grid-cols-3 gap-4">
           {vehicles.map(vehicle => (
             <div key={vehicle.id}
-              className="bg-gray-800 border border-gray-700 rounded-lg p-4 hover:border-orange-500 transition">
-              <p className="text-white font-bold text-lg">{vehicle.modelo}</p>
-              <p className="text-gray-400 text-sm">{vehicle.marca}</p>
-              <div className="mt-3 flex justify-between items-center">
-                <span className="text-xs bg-gray-700 text-gray-300 px-2 py-1 rounded-full">
-                  {vehicle.cor}
-                </span>
-                <span className="text-orange-500 font-bold text-sm">
-                  R$ {vehicle.valor.toLocaleString('pt-BR')}
-                </span>
+              className="bg-gray-800 border border-gray-700 rounded-lg overflow-hidden hover:border-orange-500 transition">
+              {vehicle.imagem && (
+                <img src={vehicle.imagem} alt={vehicle.modelo}
+                  className="w-full h-40 object-cover" />
+              )}
+              <div className="p-4">
+                <p className="text-white font-bold text-lg">{vehicle.modelo}</p>
+                <p className="text-gray-400 text-sm">{vehicle.marca}</p>
+                <div className="mt-3 flex justify-between items-center">
+                  <span className="text-xs bg-gray-700 text-gray-300 px-2 py-1 rounded-full">
+                    {vehicle.cor}
+                  </span>
+                  <span className="text-orange-500 font-bold text-sm">
+                    R$ {vehicle.valor.toLocaleString('pt-BR')}
+                  </span>
+                </div>
               </div>
             </div>
           ))}

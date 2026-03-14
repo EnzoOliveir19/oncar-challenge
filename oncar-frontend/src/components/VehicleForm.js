@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 function VehicleForm({ onVehicleCreated }) {
   const [form, setForm] = useState({
-    modelo: '', marca: '', cor: '', valor: ''
+    modelo: '', marca: '', cor: '', valor: '', imagem: ''
   });
 
   function handleChange(e) {
@@ -19,7 +19,7 @@ function VehicleForm({ onVehicleCreated }) {
       .then(res => res.json())
       .then(() => {
         onVehicleCreated();
-        setForm({ modelo: '', marca: '', cor: '', valor: '' });
+        setForm({ modelo: '', marca: '', cor: '', valor: '', imagem: '' });
       });
   }
 
@@ -37,6 +37,8 @@ function VehicleForm({ onVehicleCreated }) {
           className="bg-gray-800 border border-gray-700 text-white placeholder-gray-500 rounded-lg px-4 py-2 focus:outline-none focus:border-orange-500" />
         <input name="valor" placeholder="Valor (R$)" value={form.valor} onChange={handleChange}
           className="bg-gray-800 border border-gray-700 text-white placeholder-gray-500 rounded-lg px-4 py-2 focus:outline-none focus:border-orange-500" />
+        <input name="imagem" placeholder="URL da imagem" value={form.imagem} onChange={handleChange}
+          className="col-span-2 bg-gray-800 border border-gray-700 text-white placeholder-gray-500 rounded-lg px-4 py-2 focus:outline-none focus:border-orange-500" />
         <button type="submit"
           className="col-span-2 bg-orange-500 hover:bg-orange-400 text-white font-bold py-2 rounded-lg uppercase tracking-widest transition">
           Cadastrar
