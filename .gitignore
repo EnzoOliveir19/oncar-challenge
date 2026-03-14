@@ -1,0 +1,5 @@
+# Binários Go
+*.exe
+*.out
+# Dependências
+vendor/

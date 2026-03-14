@@ -7,18 +7,19 @@ import (
 )
 
 type Vehicle struct {
-	ID     int    `json:"id"`
-	Modelo string `json:"modelo"`
-	Marca  string `json:"marca"`
-	Cor    string `json:"cor"`
+	ID     int     `json:"id"`
+	Modelo string  `json:"modelo"`
+	Marca  string  `json:"marca"`
+	Cor    string  `json:"cor"`
+	Valor  float64 `json:"valor"`
 }
 
-var vehicles = []Vehicle{}
+var Vehicles = []Vehicle{}
 
 func GetVehicle(c *gin.Context) {
 	id := c.Param("id")
 
-	for _, v := range vehicles {
+	for _, v := range Vehicles {
 		if strconv.Itoa(v.ID) == id {
 			c.JSON(200, v)
 			return
@@ -29,7 +30,7 @@ func GetVehicle(c *gin.Context) {
 }
 
 func GetVehicles(c *gin.Context) {
-	c.JSON(200, vehicles)
+	c.JSON(200, Vehicles)
 }
 
 func CreateVehicle(c *gin.Context) {
@@ -40,17 +41,17 @@ func CreateVehicle(c *gin.Context) {
 		return
 	}
 
-	newVehicle.ID = len(vehicles) + 1
-	vehicles = append(vehicles, newVehicle)
+	newVehicle.ID = len(Vehicles) + 1
+	Vehicles = append(Vehicles, newVehicle)
 	c.JSON(201, newVehicle)
 }
 
 func DeleteVehicle(c *gin.Context) {
 	id := c.Param("id")
 
-	for i, v := range vehicles {
+	for i, v := range Vehicles {
 		if strconv.Itoa(v.ID) == id {
-			vehicles = append(vehicles[:i], vehicles[i+1:]...)
+			Vehicles = append(Vehicles[:i], Vehicles[i+1:]...)
 			c.JSON(200, gin.H{"message": "veículo removido"})
 			return
 		}
